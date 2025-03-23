@@ -30,6 +30,20 @@ public class IO {
                 System.out.println("Invalid.Please enter again!");
                 continue;
             }
+            if(input.toUpperCase().charAt(0)=='N'&&input.toUpperCase().charAt(1)=='V'&&input.length()==5){
+                for(int i=2;i<5;i++){
+                    if (input.charAt(i) < '0' || input.charAt(i) > '9') {
+                                        System.out.println("Invalid.Please enter again!");
+
+                        continue;
+                    }
+                }
+                
+            }else{
+                                System.out.println("Invalid.Please enter again!");
+
+                continue;
+            }
             break;
 
         } while (true);

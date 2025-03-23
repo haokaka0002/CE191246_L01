@@ -250,6 +250,7 @@ public class Candidate_Managers {
         //ten type sothutu
         boolean check;
         System.out.println("List of candidate:");
+        
         System.out.println("===========EXPERIENCE CANDIDATE============");
         check = false;
         System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+");
