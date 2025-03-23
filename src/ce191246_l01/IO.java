@@ -111,6 +111,12 @@ public class IO {
         do {
             try {
                 input = Integer.parseInt(sc.nextLine().trim()); // Read and parse the salary input as a double
+                
+                if((2025-input)<18){
+                    System.out.print("Impossible! Please enter BirthDate again: "); // Error message if the salary is not valid
+                    continue;
+                    
+                }
 
                 if (input > 1900 && input < 2026) { // Check if the salary is greater than 100
                     break; // Exit the loop if the salary is valid
@@ -186,6 +192,8 @@ public class IO {
                 String[] w = input.split("@");
                 String str1 = w[0];
                 String str2 = w[1];
+                String[] s = input.split(".");
+
                 if (w.length != 2) {
                     System.out.println("Invalid.Please enter again!");
                     throw new Exception();
