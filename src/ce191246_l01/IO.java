@@ -55,14 +55,14 @@ public class IO {
         do {
             try {
                 System.out.print("Enter FirstName: ");
-                input = sc.nextLine();
+                input = sc.nextLine().trim();
 
                 if (input.isEmpty()) {
                     System.out.println("Invalid.Please enter again!");
                     throw new Exception();
                 }
                 for (int i = 0; i < input.length(); i++) {    // If the character is not a valid hexadecimal digit, prompt the user to try again
-                    if (!((input.charAt(i) >= 'a' && input.charAt(i) <= 'z') || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z'))) {
+                    if (!((input.charAt(i) >= 'a' && input.charAt(i) <= 'z') || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z')||input.charAt(i)== ' ')) {
                         System.out.println("Invalid. Please enter again!"); // Error message
                         throw new Exception();
                     }
@@ -299,6 +299,10 @@ public class IO {
                 int day = Integer.parseInt(w[0]);
                 int month = Integer.parseInt(w[1]);
                 int years = Integer.parseInt(w[2]);
+                if (years > 2025) {
+                    System.out.println("Invalid.Please enter again!");
+                    throw new Exception();
+                }
 
                 if (month == 4 || month == 6 || month == 9 || month == 11) {
                     if (day > 30) {
