@@ -23,6 +23,8 @@ public class Candidate_Managers {
     private IO io = new IO();
 
     public void menu() {
+        
+        
         int choice;
         do {
             System.out.println("CANDIDATE MANAGEMENT SYSTEM");
