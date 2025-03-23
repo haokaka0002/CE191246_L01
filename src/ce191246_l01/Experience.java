@@ -49,15 +49,17 @@ public class Experience extends Candidates {
     public void entryData() {
         super.entryData();
         super.setCandidatetype(0);
-        do{
-             ExpInYear = io.expInYear();
-             if((2025-getBirthDate()-5)<ExpInYear){
-                 System.out.println("imposible");
-                 continue;
-             }else break;
-            
-        }while(true);
-       
+        do {
+            ExpInYear = io.expInYear();
+            if ((2025 - getBirthDate() - 5) < ExpInYear) {
+                System.out.println("imposible");
+                continue;
+            } else {
+                break;
+            }
+
+        } while (true);
+
         proSkill = io.proSkill();
     }
 
@@ -85,9 +87,9 @@ public class Experience extends Candidates {
                 super.setLastName(io.checkLastName());
                 break;
             case 4:
-               
+
                 super.setBirthDate(io.checkBirthDate());
-                 break;
+                break;
             case 5:
                 super.setAddress(io.checkAddress());
                 break;
@@ -105,7 +107,7 @@ public class Experience extends Candidates {
     }
 
     public void updateAttribute(int i) {
-        switch(i){
+        switch (i) {
             case 8:
                 ExpInYear = io.expInYear();
                 break;
@@ -118,16 +120,15 @@ public class Experience extends Candidates {
 
     @Override
     public void beforeUpdate(int i) {
-         String name = super.getFirstName() + " " + super.getLastName();
+        String name = super.getFirstName() + " " + super.getLastName();
         System.out.printf("|%-3d|%-16s|%-4d|\n", i, name, super.getCandidatetype());
-        
+
     }
 
     @Override
     public void show(int no) {
         String name = super.getFirstName() + " " + super.getLastName();
-        System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-10d|%-9s|\n", no,super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(),getExpInYear(),getProSkill());
-   
+        System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-10d|%-9s|\n", no, super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(), getExpInYear(), getProSkill());
 
     }
 

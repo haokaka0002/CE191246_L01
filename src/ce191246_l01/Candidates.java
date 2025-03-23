@@ -14,9 +14,9 @@ package ce191246_l01;
  *
  */
 public abstract class Candidates {
-    
+
     private IO io = new IO();
-    
+
     private String candidateId;
     private String firstName;
     private String lastName;
@@ -39,8 +39,8 @@ public abstract class Candidates {
         this.phone = phone;
         this.candidatetype = candidatetype;
     }
-    
-    public void entryData(){
+
+    public void entryData() {
         candidateId = io.checkCandidateId();
         firstName = io.checkFirstName();
         lastName = io.checkLastName();
@@ -48,11 +48,8 @@ public abstract class Candidates {
         address = io.checkAddress();
         email = io.checkEmail();
         phone = io.checkPhone();
-        
+
     }
-    
-    
-    
 
     public String getCandidateId() {
         return candidateId;
@@ -117,16 +114,15 @@ public abstract class Candidates {
     public void setCandidatetype(int candidatetype) {
         this.candidatetype = candidatetype;
     }
-    
+
     public abstract void canShow();
-    
+
     public abstract void afterSearch(int no);
-    
+
     public abstract void updateAbout(int i);
-    
+
     public abstract void beforeUpdate(int i);
-    
+
     public abstract void show(int no);
-    
-    
+
 }

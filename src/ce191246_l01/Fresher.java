@@ -14,7 +14,8 @@ package ce191246_l01;
  *
  */
 public class Fresher extends Candidates {
-private IO io = new IO();
+
+    private IO io = new IO();
     private String graduation_date;
     private String graduation_rank;
     private String education;
@@ -28,16 +29,14 @@ private IO io = new IO();
         this.graduation_rank = graduation_rank;
         this.education = education;
     }
-    
 
-   
-    public void entryData(){
+    public void entryData() {
         super.entryData();
         super.setCandidatetype(1);
         graduation_date = io.checkGraduation_date();
         graduation_rank = io.checkGraduation_rank();
         education = io.checkEducation();
-        
+
     }
 
     public String getGraduation_date() {
@@ -64,18 +63,17 @@ private IO io = new IO();
         this.education = education;
     }
 
-    
-
     @Override
-     public void canShow() {
+    public void canShow() {
         System.out.println(super.getFirstName() + " " + super.getLastName());
     }
 
-     @Override
-   public void afterSearch(int no) {
+    @Override
+    public void afterSearch(int no) {
         String name = super.getFirstName() + " " + super.getLastName();
         System.out.printf("|%-3d|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|\n", no, name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype());
     }
+
     @Override
     public void updateAbout(int i) {
         switch (i) {
@@ -89,9 +87,9 @@ private IO io = new IO();
                 super.setLastName(io.checkLastName());
                 break;
             case 4:
-               
+
                 super.setBirthDate(io.checkBirthDate());
-                 break;
+                break;
             case 5:
                 super.setAddress(io.checkAddress());
                 break;
@@ -108,37 +106,32 @@ private IO io = new IO();
         }
     }
 
-     public void updateAttribute(int i) {
-        switch(i){
+    public void updateAttribute(int i) {
+        switch (i) {
             case 8:
-                graduation_date=io.checkGraduation_date();
+                graduation_date = io.checkGraduation_date();
                 break;
             case 9:
                 graduation_rank = io.checkGraduation_rank();
                 break;
             case 10:
-                education=io.checkEducation();
+                education = io.checkEducation();
                 break;
         }
     }
 
     @Override
     public void beforeUpdate(int i) {
-         String name = super.getFirstName() + " " + super.getLastName();
+        String name = super.getFirstName() + " " + super.getLastName();
         System.out.printf("|%-3d|%-16s|%-4d|\n", i, name, super.getCandidatetype());
-        
+
     }
 
     @Override
     public void show(int no) {
-       String name = super.getFirstName() + " " + super.getLastName();
-        System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-7s|%-8s|%-10s|\n",no,super.getCandidateId(),name,super.getBirthDate(),super.getAddress(),super.getPhone(),super.getEmail(), super.getCandidatetype(),getGraduation_date(),getGraduation_rank(),getEducation());
-        
-    }
+        String name = super.getFirstName() + " " + super.getLastName();
+        System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-7s|%-8s|%-10s|\n", no, super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(), getGraduation_date(), getGraduation_rank(), getEducation());
 
-    
-    
-    
-    
+    }
 
 }

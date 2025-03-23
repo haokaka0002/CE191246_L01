@@ -23,8 +23,7 @@ public class Candidate_Managers {
     private IO io = new IO();
 
     public void menu() {
-        
-        
+
         int choice;
         do {
             System.out.println("CANDIDATE MANAGEMENT SYSTEM");
@@ -35,7 +34,7 @@ public class Candidate_Managers {
             System.out.println("5. Update");
             System.out.println("6. Delete");
             System.out.println("7. Show");
-            System.out.println("8. ShowAll");
+            System.out.println("8. Show detail");
             System.out.println("9. Exit");
             System.out.print("Please choose: ");
 
@@ -65,7 +64,7 @@ public class Candidate_Managers {
                 case 8:
                     showALl();
                     break;
-                case 9:  
+                case 9:
                     break;
             }
         } while (choice != 9);
@@ -249,14 +248,28 @@ public class Candidate_Managers {
 
         //ten type sothutu
         boolean check;
+
+        int countEx = 0;
+        int countFr = 0;
+        int countIn = 0;
         System.out.println("List of candidate:");
-        
+
         System.out.println("===========EXPERIENCE CANDIDATE============");
         check = false;
-        System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+");
-        System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|ExpInYear |ProSkill |");
-        System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+");
 
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) instanceof Experience) {
+
+                countEx++;
+
+            }
+        }
+        if (countEx != 0) {
+
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+");
+            System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|ExpInYear |ProSkill |");
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+");
+        }
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) instanceof Experience) {
 
@@ -264,18 +277,29 @@ public class Candidate_Managers {
                 check = true;
             }
         }
+        if (countEx != 0) {
 
-        System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+");
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+");
+        }
 
         if (!check) {
             System.out.println("List empty");
         }
         System.out.println("==========FRESHER CANDIDATE==============");
         check = false;
-        System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+--------+----------+");
-        System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|Date      |Rank    |Education |");
-        System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+--------+----------+");
 
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) instanceof Fresher) {
+
+                countFr++;
+
+            }
+        }
+        if (countFr != 0) {
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+--------+----------+");
+            System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|Date      |Rank    |Education |");
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+--------+----------+");
+        }
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) instanceof Fresher) {
 
@@ -283,25 +307,35 @@ public class Candidate_Managers {
                 check = true;
             }
         }
-        System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+--------+----------+");
-
+        if (countFr != 0) {
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+--------+----------+");
+        }
         if (!check) {
             System.out.println("List empty");
         }
         System.out.println("===========INTERN CANDIDATE==============");
         check = false;
-        System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-------+--------+----------+");
-        System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|Major  |Semester|University|");
-        System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-------+--------+----------+");
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) instanceof Fresher) {
 
+                countIn++;
+
+            }
+        }
+        if (countIn != 0) {
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-------+--------+----------+");
+            System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|Major  |Semester|University|");
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-------+--------+----------+");
+        }
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) instanceof Internship) {
                 list.get(i).show(i + 1);
                 check = true;
             }
         }
-
-        System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-------+--------+----------+");
+        if (countIn != 0) {
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-------+--------+----------+");
+        }
         if (!check) {
             System.out.println("List empty");
         }
@@ -310,17 +344,17 @@ public class Candidate_Managers {
 
     public void show() {
         int i = 0;
-        if(list.isEmpty()){
+        if (list.isEmpty()) {
             System.out.println("list is empty");
-        }else {
-        System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
-        System.out.println("|No.|Fullname        |Birthdate|Address      |Phone     |Email            |Type|");
-        System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
-        for (Candidates s : list) {
-            i++;
-            s.afterSearch(i);
-        }
-        System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
+        } else {
+            System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
+            System.out.println("|No.|Fullname        |Birthdate|Address      |Phone     |Email            |Type|");
+            System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
+            for (Candidates s : list) {
+                i++;
+                s.afterSearch(i);
+            }
+            System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
         }
     }
 }

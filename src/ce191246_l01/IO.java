@@ -30,17 +30,17 @@ public class IO {
                 System.out.println("Invalid.Please enter again!");
                 continue;
             }
-            if(input.toUpperCase().charAt(0)=='N'&&input.toUpperCase().charAt(1)=='V'&&input.length()==5){
-                for(int i=2;i<5;i++){
+            if (input.toUpperCase().charAt(0) == 'N' && input.toUpperCase().charAt(1) == 'V' && input.length() == 5) {
+                for (int i = 2; i < 5; i++) {
                     if (input.charAt(i) < '0' || input.charAt(i) > '9') {
-                                        System.out.println("Invalid.Please enter again!");
+                        System.out.println("Invalid.Please enter again!");
 
                         continue;
                     }
                 }
-                
-            }else{
-                                System.out.println("Invalid.Please enter again!");
+
+            } else {
+                System.out.println("Invalid.Please enter again!");
 
                 continue;
             }
@@ -111,11 +111,11 @@ public class IO {
         do {
             try {
                 input = Integer.parseInt(sc.nextLine().trim()); // Read and parse the salary input as a double
-                
-                if((2025-input)<18){
+
+                if ((2025 - input) < 18) {
                     System.out.print("Impossible! Please enter BirthDate again: "); // Error message if the salary is not valid
                     continue;
-                    
+
                 }
 
                 if (input > 1900 && input < 2026) { // Check if the salary is greater than 100
@@ -192,13 +192,12 @@ public class IO {
                 String[] w = input.split("@");
                 String str1 = w[0];
                 String str2 = w[1];
-                
 
                 if (w.length != 2) {
                     System.out.println("Invalid.Please enter again!");
                     throw new Exception();
                 }
-                if(str1.isEmpty()){
+                if (str1.isEmpty()) {
                     System.out.println("Invalid.Please enter again!");
                     throw new Exception();
                 }
@@ -207,26 +206,23 @@ public class IO {
                     System.out.println("Invalid.Please enter again!");
                     throw new Exception();
                 }
-                
-                
+
                 String[] s = str2.split("\\.");
                 String ar1 = s[0];
                 String ar2 = s[1];
-               
-                
-                if(s.length!=2){
+
+                if (s.length != 2) {
                     System.out.println("Invalid.Please enter again!");
                     throw new Exception();
                 }
-                if(ar1.isEmpty()){
+                if (ar1.isEmpty()) {
                     System.out.println("Invalid.Please enter again!");
                     throw new Exception();
                 }
-                
-            }catch(ArrayIndexOutOfBoundsException i){
+
+            } catch (ArrayIndexOutOfBoundsException i) {
                 System.out.println("Invalid.Please enter again!");
                 continue;
-                
 
             } catch (Exception e) {
                 continue;
@@ -271,7 +267,7 @@ public class IO {
                     System.out.println("Invalid.Please enter again!");
                     throw new Exception();
                 }
-                for (int i = 0; i < input.length() ; i++) {    // If the character is not a valid hexadecimal digit, prompt the user to try again
+                for (int i = 0; i < input.length(); i++) {    // If the character is not a valid hexadecimal digit, prompt the user to try again
                     if (!((input.charAt(i) >= 'a' && input.charAt(i) <= 'z') || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z'))) {
                         System.out.println("Invalid. Please enter again!"); // Error message
                         throw new Exception();
@@ -470,7 +466,7 @@ public class IO {
             try {
                 choice = Integer.parseInt(sc.nextLine().trim()); // Read and parse the user's input into an integer
 
-                if (choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5 || choice == 6 || choice == 7 || choice == 8||choice==9) { // Check if the choice is valid
+                if (choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5 || choice == 6 || choice == 7 || choice == 8 || choice == 9) { // Check if the choice is valid
                     break; // Exit the loop if the choice is valid
                 } else {
                     System.out.print("Must enter 1 - 9: "); // Prompt the user again if the choice is invalid
@@ -588,6 +584,7 @@ public class IO {
         } while (true);
         return input;
     }
+
     public String checkDelete() {
         String input;
         do {

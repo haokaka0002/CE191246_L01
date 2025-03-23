@@ -13,7 +13,8 @@ package ce191246_l01;
  * Date: 1/4/2025
  *
  */
-public class Internship extends Candidates{
+public class Internship extends Candidates {
+
     private String majors;
     private String semester;
     private String universityName;
@@ -29,14 +30,12 @@ public class Internship extends Candidates{
         this.universityName = universityName;
     }
 
-    
-    
-    public void entryData(){
+    public void entryData() {
         super.entryData();
         super.setCandidatetype(1);
-       majors = io.checkMajors();
-       semester = io.checkSemester();
-       universityName=io.checkUniversityname();
+        majors = io.checkMajors();
+        semester = io.checkSemester();
+        universityName = io.checkUniversityname();
     }
 
     public String getMajors() {
@@ -63,19 +62,18 @@ public class Internship extends Candidates{
         this.universityName = universityName;
     }
 
-
     @Override
-     public void canShow() {
+    public void canShow() {
         System.out.println(super.getFirstName() + " " + super.getLastName());
     }
 
-     @Override
+    @Override
     public void afterSearch(int no) {
         String name = super.getFirstName() + " " + super.getLastName();
         System.out.printf("|%-3d|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|\n", no, name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype());
     }
 
-   @Override
+    @Override
     public void updateAbout(int i) {
         switch (i) {
             case 1:
@@ -88,9 +86,9 @@ public class Internship extends Candidates{
                 super.setLastName(io.checkLastName());
                 break;
             case 4:
-               
+
                 super.setBirthDate(io.checkBirthDate());
-                 break;
+                break;
             case 5:
                 super.setAddress(io.checkAddress());
                 break;
@@ -107,33 +105,32 @@ public class Internship extends Candidates{
         }
     }
 
-     public void updateAttribute(int i) {
-        switch(i){
+    public void updateAttribute(int i) {
+        switch (i) {
             case 8:
-                majors=io.checkMajors();
+                majors = io.checkMajors();
                 break;
             case 9:
-              semester=io.checkSemester();
+                semester = io.checkSemester();
                 break;
             case 10:
-               universityName=io.checkUniversityname();
+                universityName = io.checkUniversityname();
                 break;
         }
 
     }
 
     @Override
-   public void beforeUpdate(int i) {
-         String name = super.getFirstName() + " " + super.getLastName();
+    public void beforeUpdate(int i) {
+        String name = super.getFirstName() + " " + super.getLastName();
         System.out.printf("|%-3d|%-16s|%-4d|\n", i, name, super.getCandidatetype());
-        
+
     }
 
     @Override
     public void show(int no) {
-       String name = super.getFirstName() + " " + super.getLastName();
-        System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-7s|%-8s|%-10s|\n",no,super.getCandidateId(),name,super.getBirthDate(),super.getAddress(),super.getPhone(),super.getEmail(), super.getCandidatetype(),getMajors(),getSemester(),getUniversityName());
+        String name = super.getFirstName() + " " + super.getLastName();
+        System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-7s|%-8s|%-10s|\n", no, super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(), getMajors(), getSemester(), getUniversityName());
     }
-    
-    
+
 }

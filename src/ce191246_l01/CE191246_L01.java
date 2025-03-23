@@ -19,12 +19,10 @@ public class CE191246_L01 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       
-//        Candidate_Managers cd = new Candidate_Managers();
-//        cd.menu();
-IO io = new IO();
-io.checkEmail();
+
+        Candidate_Managers cd = new Candidate_Managers();
+        cd.menu();
 
     }
-    
+
 }
