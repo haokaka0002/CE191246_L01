@@ -35,7 +35,8 @@ public class Candidate_Managers {
             System.out.println("5. Update");
             System.out.println("6. Delete");
             System.out.println("7. Show");
-            System.out.println("8. Exit");
+            System.out.println("8. ShowAll");
+            System.out.println("9. Exit");
             System.out.print("Please choose: ");
 
             choice = io.checkChoice();
@@ -308,6 +309,9 @@ public class Candidate_Managers {
 
     public void show() {
         int i = 0;
+        if(list.isEmpty()){
+            System.out.println("list is empty");
+        }else {
         System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
         System.out.println("|No.|Fullname        |Birthdate|Address      |Phone     |Email            |Type|");
         System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
@@ -316,6 +320,6 @@ public class Candidate_Managers {
             s.afterSearch(i);
         }
         System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
-
+        }
     }
 }
