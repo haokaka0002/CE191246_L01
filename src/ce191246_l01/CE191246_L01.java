@@ -16,11 +16,16 @@ package ce191246_l01;
 public class CE191246_L01 {
 
     /**
+     * The main method - entry point of the program
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
+        // Create an instance of Candidate_Managers
         Candidate_Managers cd = new Candidate_Managers();
+
+        // Call the menu method to start the program
         cd.menu();
 
     }

@@ -5,7 +5,6 @@
  */
 package ce191246_l01;
 
-import java.awt.Choice;
 import java.util.ArrayList;
 
 /**
@@ -18,343 +17,355 @@ import java.util.ArrayList;
  */
 public class Candidate_Managers {
 
-    private ArrayList<Candidates> list = new ArrayList<>();
+    private ArrayList<Candidates> list = new ArrayList<>(); // List to store all candidates
 
-    private IO io = new IO();
+    private IO io = new IO(); // IO object to handle user inputs and validations
 
+    /**
+     * Displays the main menu for the candidate management system.
+     */
     public void menu() {
 
-        int choice;
+        int choice; // Variable to store user choice
         do {
-            System.out.println("CANDIDATE MANAGEMENT SYSTEM");
-            System.out.println("1. Experience");
-            System.out.println("2. Fresher");
-            System.out.println("3. Internship");
-            System.out.println("4. Searching");
-            System.out.println("5. Update");
-            System.out.println("6. Delete");
-            System.out.println("7. Show");
-            System.out.println("8. Show detail");
-            System.out.println("9. Exit");
-            System.out.print("Please choose: ");
+            System.out.println("CANDIDATE MANAGEMENT SYSTEM"); // Display menu title
+            System.out.println("1. Experience"); // Option 1
+            System.out.println("2. Fresher"); // Option 2
+            System.out.println("3. Internship"); // Option 3
+            System.out.println("4. Searching"); // Option 4
+            System.out.println("5. Update"); // Option 5
+            System.out.println("6. Delete"); // Option 6
+            System.out.println("7. Show"); // Option 7
+            System.out.println("8. Show detail"); // Option 8
+            System.out.println("9. Exit"); // Option 9
+            System.out.print("Please choose: "); // Prompt user for choice
 
-            choice = io.checkChoice();
-            switch (choice) {
+            choice = io.checkChoice(); // Validate and get choice
+            switch (choice) { // Process user choice
                 case 1:
-                    experience();
+                    experience(); // Handle Experience case
                     break;
                 case 2:
-                    fresher();
+                    fresher(); // Handle Fresher case
                     break;
                 case 3:
-                    internship();
+                    internship(); // Handle Internship case
                     break;
                 case 4:
-                    searching();
+                    searching(); // Handle Searching case
                     break;
                 case 5:
-                    update();
+                    update(); // Handle Update case
                     break;
                 case 6:
-                    delete();
+                    delete(); // Handle Delete case
                     break;
                 case 7:
-                    show();
+                    show(); // Handle Show case
                     break;
                 case 8:
-                    showALl();
+                    showALl(); // Handle Show All Details case
                     break;
                 case 9:
-                    break;
+                    break; // Exit loop
             }
-        } while (choice != 9);
+        } while (choice != 9); // Loop until user chooses to exit
 
     }
 
+    /**
+     * Adds a new Experience candidate.
+     */
     public void experience() {
-        Candidates ex = new Experience();
-        ex.entryData();
-        list.add(ex);
+        Candidates ex = new Experience(); // Create new Experience object
+        ex.entryData(); // Input data
+        list.add(ex); // Add to list
 
     }
 
+    /**
+     * Adds a new Fresher candidate.
+     */
     public void fresher() {
-        Candidates fr = new Fresher();
-        fr.entryData();
-        list.add(fr);
+        Candidates fr = new Fresher(); // Create new Fresher object
+        fr.entryData(); // Input data
+        list.add(fr); // Add to list
 
     }
 
+    /**
+     * Adds a new Internship candidate.
+     */
     public void internship() {
-        Candidates in = new Internship();
-        in.entryData();
-        list.add(in);
+        Candidates in = new Internship(); // Create new Internship object
+        in.entryData(); // Input data
+        list.add(in); // Add to list
 
     }
 
+    /**
+     * Searches for candidates by name and type.
+     */
     public void searching() {
-        boolean check;
-        System.out.println("List of candidate:");
-        System.out.println("===========EXPERIENCE CANDIDATE============");
-        check = false;
-        for (Candidates s : list) {
-            if (s instanceof Experience) {
-                s.canShow();
-                check = true;
+        boolean check; // Flag to check if any candidates exist per type
+        System.out.println("List of candidate:"); // Title
+        System.out.println("===========EXPERIENCE CANDIDATE============"); // Section title
+        check = false; // Reset check
+        for (Candidates s : list) { // Loop through list
+            if (s instanceof Experience) { // Check if Experience
+                s.canShow(); // Display summary
+                check = true; // Found at least one
             }
         }
-        if (check == false) {
-            System.out.println("List empty");
+        if (check == false) { // If none found
+            System.out.println("List empty"); // Inform user
         }
-        System.out.println("==========FRESHER CANDIDATE==============");
-        check = false;
-        for (Candidates s : list) {
-            if (s instanceof Fresher) {
-                s.canShow();
-                check = true;
+        System.out.println("==========FRESHER CANDIDATE=============="); // Section title
+        check = false; // Reset check
+        for (Candidates s : list) { // Loop again
+            if (s instanceof Fresher) { // Check if Fresher
+                s.canShow(); // Display summary
+                check = true; // Found
             }
         }
-        if (check == false) {
-            System.out.println("List empty");
+        if (check == false) { // If none found
+            System.out.println("List empty"); // Inform user
         }
-        System.out.println("===========INTERN CANDIDATE==============");
-        check = false;
-        for (Candidates s : list) {
-            if (s instanceof Internship) {
-                s.canShow();
-                check = true;
+        System.out.println("===========INTERN CANDIDATE=============="); // Section title
+        check = false; // Reset check
+        for (Candidates s : list) { // Loop again
+            if (s instanceof Internship) { // Check if Internship
+                s.canShow(); // Display summary
+                check = true; // Found
             }
         }
-        if (check == false) {
-            System.out.println("List empty");
+        if (check == false) { // If none found
+            System.out.println("List empty"); // Inform user
         }
 
-        String nameCheck = io.searchName();
-        int typeCheck = Integer.parseInt(io.checkCandidateType());
-        int i = 0;
-        check = false;
-        System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
-        System.out.println("|No.|Fullname        |Birthdate|Address      |Phone     |Email            |Type|");
-        System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
+        String nameCheck = io.searchName(); // Get name for search
+        int typeCheck = Integer.parseInt(io.checkCandidateType()); // Get type for search
+        int i = 0; // Index counter
+        check = false; // Reset check
+        System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+"); // Table header
+        System.out.println("|No.|Fullname        |Birthdate|Address      |Phone     |Email            |Type|"); // Table columns
+        System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+"); // Table line
 
-        for (Candidates s : list) {
-            if (s.getFirstName().contains(nameCheck) || s.getLastName().contains(nameCheck)) {
-                if (typeCheck == 0) {
+        for (Candidates s : list) { // Loop list
+            if (s.getFirstName().contains(nameCheck) || s.getLastName().contains(nameCheck)) { // Match name
+                if (typeCheck == 0) { // Check type Experience
                     if (s instanceof Experience) {
-                        i++;
-                        s.afterSearch(i);
-                        check = true;
+                        i++; // Increase index
+                        s.afterSearch(i); // Show row
+                        check = true; // Found
                     }
-
-                } else if (typeCheck == 1) {
+                } else if (typeCheck == 1) { // Fresher
                     if (s instanceof Fresher) {
-                        i++;
-                        s.afterSearch(i);
-                        check = true;
+                        i++;// Increase index
+                        s.afterSearch(i);// Show row
+                        check = true;// Found
                     }
 
-                } else if (typeCheck == 2) {
+                } else if (typeCheck == 2) { // Internship
                     if (s instanceof Internship) {
-                        i++;
-                        s.afterSearch(i);
-                        check = true;
+                        i++;// Increase index
+                        s.afterSearch(i);// Show row
+                        check = true;// Found
                     }
 
                 }
 
             }
         }
-        System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
+        System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+"); // End line
 
-        if (!check) {
-            System.out.println("list Empty");
+        if (!check) { // If none found
+            System.out.println("list Empty"); // Inform user
         }
 
     }
 
     /**
-     * 1 id
-     *
-     *
-     *
-     * 7.email
-     *
-     * if s instanceof Experience 8.exp in year
-     *
-     * else s instance of Fresher
-     *
-     * 8.graduation_date
+     * Updates candidate information based on user selection.
      */
     public void update() {
-        showALl();
-        int select = 0, checkUp = 0;
-        if (list.isEmpty()) {
-            System.out.println("list Empty");
+        showALl(); // Show all candidates
+        int select = 0, checkUp = 0; // Variables for selected index and update option
+        if (list.isEmpty()) { // If list is empty
+            System.out.println("Please enter data"); // Inform user
         } else {
 
-            do {
-                select = Integer.parseInt(io.checkIndex());
-                if (select <= list.size()) {
-                    break;
+            do { // Repeat until valid index selected
+                select = Integer.parseInt(io.checkIndex()); // Get index to update
+                if (select <= list.size()) { // If valid
+                    break; // Exit loop
                 } else {
-                    System.out.println("only in list");
+                    System.out.println("only in list"); // Invalid message
                 }
-            } while (true);
+            } while (true); // Loop control
 
-            System.out.println("1. Update candidateId ");
-            System.out.println("2. Update firstName ");
-            System.out.println("3. Update lastName ");
-            System.out.println("4. Update birthDate ");
-            System.out.println("5. Update address ");
-            System.out.println("6. Update email ");
-            System.out.println("7. Update phone ");
-            if (list.get(select - 1) instanceof Experience) {
-                System.out.println("8. Update Experience Of Years");
-                System.out.println("9. Update ProSkill");
-            } else if (list.get(select - 1) instanceof Fresher) {
-                System.out.println("8. Update Graduation Date");
-                System.out.println("9. Update Graduation Rank");
-                System.out.println("10. Update Education");
+            System.out.println("1. Update candidateId "); // Option 1
+            System.out.println("2. Update firstName "); // Option 2
+            System.out.println("3. Update lastName "); // Option 3
+            System.out.println("4. Update birthDate "); // Option 4
+            System.out.println("5. Update address "); // Option 5
+            System.out.println("6. Update email "); // Option 6
+            System.out.println("7. Update phone "); // Option 7
+            if (list.get(select - 1) instanceof Experience) { // If Experience
+                System.out.println("8. Update Experience Of Years"); // Option 8
+                System.out.println("9. Update ProSkill"); // Option 9
+            } else if (list.get(select - 1) instanceof Fresher) { // If Fresher
+                System.out.println("8. Update Graduation Date"); // Option 8
+                System.out.println("9. Update Graduation Rank"); // Option 9
+                System.out.println("10. Update Education"); // Option 10
 
-            } else {
-                System.out.println("8. Update  Majors");
-                System.out.println("9. Update Semester");
-                System.out.println("10. universityName");
+            } else { // If Internship
+                System.out.println("8. Update  Majors"); // Option 8
+                System.out.println("9. Update Semester"); // Option 9
+                System.out.println("10. universityName"); // Option 10
             }
 
-            checkUp = Integer.parseInt(io.checkNumber());
+            checkUp = Integer.parseInt(io.checkNumber()); // Get field to update
 
-            //   in menu nguoi dung can update gi
-            // int select = io.kiem tra phan can update
-            list.get(select - 1).updateAbout(checkUp);
+            list.get(select - 1).updateAbout(checkUp); // Call update method
 
-            System.out.println("update successfully!");
+            System.out.println("update successfully!"); // Inform user
         }
 
     }
 
+    /**
+     * Deletes a candidate based on the selected index.
+     */
     public void delete() {
 
-        showALl();
-        if (!list.isEmpty()) {
-            int index = Integer.parseInt(io.checkDelete());
+        showALl(); // Show all candidates
+        if (!list.isEmpty()) { // Check if list is not empty
+            int index = Integer.parseInt(io.checkDelete()); // Get index to delete
 
-            list.remove(index - 1);
-            System.out.println("Delete successfully");
+            list.remove(index - 1); // Remove candidate from list
+            System.out.println("Delete successfully"); // Confirm deletion
         }
     }
 
+    /**
+     * Shows detailed list of all candidates separated by type.
+     */
     public void showALl() {
 
-        //ten type sothutu
-        boolean check;
+        boolean check; // Flag to check if any candidates exist per section
 
-        int countEx = 0;
-        int countFr = 0;
-        int countIn = 0;
-        System.out.println("List of candidate:");
+        int countEx = 0; // Count Experience candidates
+        int countFr = 0; // Count Fresher candidates
+        int countIn = 0; // Count Internship candidates
+        System.out.println("List of candidate:"); // Display title
 
-        System.out.println("===========EXPERIENCE CANDIDATE============");
-        check = false;
-
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) instanceof Experience) {
-
-                countEx++;
-
+        // Experience section
+        System.out.println("===========EXPERIENCE CANDIDATE=========="); // Header
+        check = false; // Reset check
+        for (int i = 0; i < list.size(); i++) { // Loop through list
+            if (list.get(i) instanceof Experience) { // Check type
+                countEx++; // Count up
             }
         }
         if (countEx != 0) {
 
-            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+");
-            System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|ExpInYear |ProSkill |");
-            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+");
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+"); // Table header
+            System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|ExpInYear |ProSkill |"); // Columns
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+"); // Separator
         }
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) instanceof Experience) {
+        for (int i = 0; i < list.size(); i++) {// Loop through list
+            if (list.get(i) instanceof Experience) {//check is have data or no
 
-                list.get(i).show(i + 1);
-                check = true;
+                list.get(i).show(i + 1); // Show candidate
+                check = true; // Found
             }
         }
-        if (countEx != 0) {
+        if (countEx != 0) {//check is have data or no
 
-            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+");
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+"); // Footer
         }
 
-        if (!check) {
-            System.out.println("List empty");
+        if (!check) {//check is have data or no
+            System.out.println("List empty"); // Inform user
         }
-        System.out.println("==========FRESHER CANDIDATE==============");
-        check = false;
 
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) instanceof Fresher) {
+        // Fresher section
+        System.out.println("===========FRESHER CANDIDATE============="); // Header
+        check = false; // Reset check
 
-                countFr++;
+        for (int i = 0; i < list.size(); i++) {// Loop through list
+            if (list.get(i) instanceof Fresher) {//check is have data or no
 
-            }
-        }
-        if (countFr != 0) {
-            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+--------+----------+");
-            System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|Date      |Rank    |Education |");
-            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+--------+----------+");
-        }
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) instanceof Fresher) {
-
-                list.get(i).show(i + 1);
-                check = true;
-            }
-        }
-        if (countFr != 0) {
-            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+--------+----------+");
-        }
-        if (!check) {
-            System.out.println("List empty");
-        }
-        System.out.println("===========INTERN CANDIDATE==============");
-        check = false;
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) instanceof Internship) {
-
-                countIn++;
+                countFr++; // Count up
 
             }
         }
-        if (countIn != 0) {
-            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-------+--------+----------+");
-            System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|Major  |Semester|University|");
-            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-------+--------+----------+");
+        if (countFr != 0) {//check is have data or no
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+--------+----------+"); // Header
+            System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|Date      |Rank    |Education |"); // Columns
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+--------+----------+"); // Separator
         }
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) instanceof Internship) {
-                list.get(i).show(i + 1);
-                check = true;
+        for (int i = 0; i < list.size(); i++) {// Loop through list
+            if (list.get(i) instanceof Fresher) {//check is have data or no
+
+                list.get(i).show(i + 1); // Show
+                check = true;// Found
             }
         }
-        if (countIn != 0) {
-            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-------+--------+----------+");
+        if (countFr != 0) {//check is have data or no
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+--------+----------+"); // Footer
         }
-        if (!check) {
-            System.out.println("List empty");
+        if (!check) {//check is have data or no
+            System.out.println("List empty"); // Inform user
+        }
+
+        // Internship section
+        System.out.println("===========INTERN CANDIDATE=============="); // Header
+        check = false; // Reset
+        for (int i = 0; i < list.size(); i++) {// Loop through list
+            if (list.get(i) instanceof Internship) {//check is have data or no
+
+                countIn++; // Count up
+
+            }
+        }
+        if (countIn != 0) {//check is have data or no
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-------+--------+----------+"); // Header
+            System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|Major  |Semester|University|"); // Columns
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-------+--------+----------+"); // Separator
+        }
+        for (int i = 0; i < list.size(); i++) {// Loop through list
+            if (list.get(i) instanceof Internship) {//check is have data or no
+                list.get(i).show(i + 1); // Show
+                check = true; // Found
+            }
+        }
+        if (countIn != 0) {//check is have data or no
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-------+--------+----------+"); // Footer
+        }
+        if (!check) {//check is have data or no
+            System.out.println("List empty"); // Inform user
         }
 
     }
 
+    /**
+     * Shows a summary list of all candidates.
+     */
     public void show() {
-        int i = 0;
-        if (list.isEmpty()) {
-            System.out.println("list is empty");
+        int i = 0; // Counter
+        if (list.isEmpty()) { // Check if empty
+            System.out.println("list is empty"); // Inform user
         } else {
-            System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
-            System.out.println("|No.|Fullname        |Birthdate|Address      |Phone     |Email            |Type|");
-            System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
-            for (Candidates s : list) {
-                i++;
-                s.afterSearch(i);
+            System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+"); // Header
+            System.out.println("|No.|Fullname        |Birthdate|Address      |Phone     |Email            |Type|"); // Columns
+            System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+"); // Separator
+            for (Candidates s : list) { // Loop list
+                i++; // Increment index
+                s.afterSearch(i); // Show summary
             }
-            System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
+            System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+"); // Footer
         }
     }
 }
