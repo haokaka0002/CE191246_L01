@@ -192,9 +192,13 @@ public class IO {
                 String[] w = input.split("@");
                 String str1 = w[0];
                 String str2 = w[1];
-                String[] s = input.split(".");
+                
 
                 if (w.length != 2) {
+                    System.out.println("Invalid.Please enter again!");
+                    throw new Exception();
+                }
+                if(str1.isEmpty()){
                     System.out.println("Invalid.Please enter again!");
                     throw new Exception();
                 }
@@ -203,6 +207,26 @@ public class IO {
                     System.out.println("Invalid.Please enter again!");
                     throw new Exception();
                 }
+                
+                
+                String[] s = str2.split("\\.");
+                String ar1 = s[0];
+                String ar2 = s[1];
+               
+                
+                if(s.length!=2){
+                    System.out.println("Invalid.Please enter again!");
+                    throw new Exception();
+                }
+                if(ar1.isEmpty()){
+                    System.out.println("Invalid.Please enter again!");
+                    throw new Exception();
+                }
+                
+            }catch(ArrayIndexOutOfBoundsException i){
+                System.out.println("Invalid.Please enter again!");
+                continue;
+                
 
             } catch (Exception e) {
                 continue;

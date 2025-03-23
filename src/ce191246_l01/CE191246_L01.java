@@ -20,8 +20,10 @@ public class CE191246_L01 {
      */
     public static void main(String[] args) {
        
-        Candidate_Managers cd = new Candidate_Managers();
-        cd.menu();
+//        Candidate_Managers cd = new Candidate_Managers();
+//        cd.menu();
+IO io = new IO();
+io.checkEmail();
 
     }
     
