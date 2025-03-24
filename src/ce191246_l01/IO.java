@@ -490,7 +490,7 @@ public class IO {
 
                 for (int i = 0; i < input.length(); i++) { // Loop through characters
                     if (!((input.charAt(i) >= 'a' && input.charAt(i) <= 'z')
-                            || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z'))) { // Check if not a letter
+                            || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z')||input.charAt(i)==' ')) { // Check if not a letter
                         System.out.println("Invalid. Please enter again!"); // Error message
                         throw new Exception(); // Retry
                     }
@@ -563,7 +563,7 @@ public class IO {
 
                 for (int i = 0; i < input.length() - 1; i++) { // Loop through characters except last one
                     if (!((input.charAt(i) >= 'a' && input.charAt(i) <= 'z')
-                            || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z'))) { // Check if character is valid
+                            || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z')||input.charAt(i)==' ')) { // Check if character is valid
                         System.out.println("Invalid. Please enter again!"); // Error message
                         throw new Exception(); // Skip invalid character
                     }

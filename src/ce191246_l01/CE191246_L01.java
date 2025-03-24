@@ -27,6 +27,9 @@ public class CE191246_L01 {
 
         // Call the menu method to start the program
         cd.menu();
+        
+//        IO io = new IO();
+//        io.checkDelete();
 
     }
 

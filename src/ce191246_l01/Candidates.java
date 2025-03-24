@@ -261,7 +261,7 @@ public void afterSearch(int no) {
      *
      * @param i Identifier or index of the candidate
      */
-//    public abstract void updateAbout(int i);
+    public abstract void updateAbout(int i);
 
   
    

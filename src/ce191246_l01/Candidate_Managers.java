@@ -30,7 +30,16 @@ public class Candidate_Managers {
     public void menu() {
 
         int choice; // Variable to store user choice
-
+ list.add(new Internship("toan", "tho", "fpt", "3112", "phan", "ThoInter", 1, "302", "phan@gmail.com", "0377164760", 2));
+        list.add(new Internship("toan", "tho", "fpt", "3112", "phan", "Tho", 1, "302", "phan@gmail.com", "0377164760", 2));
+        list.add(new Internship("toan", "tho", "fpt", "3112", "phan", "Tho", 1, "302", "phan@gmail.com", "0377164760", 2));
+        list.add(new Internship("toan", "tho", "fpt", "3112", "phan", "Tho", 1, "302", "phan@gmail.com", "0377164760", 2));
+        list.add(new Fresher("20/10/2006", "good", "daihoc", "se1092", "thofr", "phan", 1, "302", "phan@gmail.com", "0377164760", 1));
+        list.add(new Fresher("20/10/2006", "good", "daihoc", "se1092", "tho", "phan", 1, "302", "phan@gmail.com", "0377164760", 1));
+        list.add(new Fresher("20/10/2006", "good", "daihoc", "se1092", "tho", "phan", 1, "302", "phan@gmail.com", "0377164760", 1));
+        list.add(new Experience(1, "yasuo", "se1902", "thoex", "phan", 1, "302", "tho@gmail.com", "0377174760", 0));
+        list.add(new Experience(1, "yasuo", "se1902", "tho", "phan", 1, "302", "tho@gmail.com", "0377174760", 0));
+        list.add(new Experience(1, "yasuo", "se1902", "tho", "phan", 1, "302", "tho@gmail.com", "0377174760", 0));
         do {
             System.out.println("CANDIDATE MANAGEMENT SYSTEM"); // Display menu title
             System.out.println("1. Experience"); // Option 1
@@ -199,61 +208,55 @@ public class Candidate_Managers {
     /**
      * Updates candidate information based on user selection.
      */
+   
     public void update() {
-        showALl(); // Show all candidates
-        int select = 0, checkUp = 0; // Variables for selected index and update option
-        if (list.isEmpty()) { // If list is empty
-            System.out.println("Please enter data"); // Inform user
+        showALl();
+        int select = 0, checkUp = 0;
+        if (list.isEmpty()) {
+            System.out.println("list Empty");
         } else {
 
-            do { // Repeat until valid index selected
-                select = Integer.parseInt(io.checkIndex()); // Get index to update
-                if (select <= list.size()) { // If valid
-                    break; // Exit loop
+            do {
+                select = Integer.parseInt(io.checkIndex());
+                if (select <= list.size()) {
+                    break;
                 } else {
-                    System.out.println("only in list"); // Invalid message
+                    System.out.println("only in list");
                 }
-            } while (true); // Loop control
+            } while (true);
 
-            System.out.println("1. Update candidateId "); // Option 1
-            System.out.println("2. Update firstName "); // Option 2
-            System.out.println("3. Update lastName "); // Option 3
-            System.out.println("4. Update birthDate "); // Option 4
-            System.out.println("5. Update address "); // Option 5
-            System.out.println("6. Update email "); // Option 6
-            System.out.println("7. Update phone "); // Option 7
-            if (list.get(select - 1) instanceof Experience) { // If Experience
-                System.out.println("8. Update Experience Of Years"); // Option 8
-                System.out.println("9. Update ProSkill"); // Option 9
-                checkUp = Integer.parseInt(io.checkNumber()); // Get field to update
+            System.out.println("1. Update candidateId ");
+            System.out.println("2. Update firstName ");
+            System.out.println("3. Update lastName ");
+            System.out.println("4. Update birthDate ");
+            System.out.println("5. Update address ");
+            System.out.println("6. Update email ");
+            System.out.println("7. Update phone ");
+            if (list.get(select - 1) instanceof Experience) {
+                System.out.println("8. Update Experience Of Years");
+                System.out.println("9. Update ProSkill");
+            } else if (list.get(select - 1) instanceof Fresher) {
+                System.out.println("8. Update Graduation Date");
+                System.out.println("9. Update Graduation Rank");
+                System.out.println("10. Update Education");
 
-                ex.updateAbout(checkUp); // Call update method
-                list.set(select - 1, ex);
-                System.out.println("update successfully!"); // Inform user
-            } else if (list.get(select - 1) instanceof Fresher) { // If Fresher
-                System.out.println("8. Update Graduation Date"); // Option 8
-                System.out.println("9. Update Graduation Rank"); // Option 9
-                System.out.println("10. Update Education"); // Option 10
-                checkUp = Integer.parseInt(io.checkNumber()); // Get field to update
-
-                fr.updateAbout(checkUp); // Call update method
-                list.set(select - 1, fr);
-                System.out.println("update successfully!"); // Inform user
-
-            } else { // If Internship
-                System.out.println("8. Update  Majors"); // Option 8
-                System.out.println("9. Update Semester"); // Option 9
-                System.out.println("10. universityName"); // Option 10
-                checkUp = Integer.parseInt(io.checkNumber()); // Get field to update
-
-                in.updateAbout(checkUp); // Call update method
-                list.set(select - 1, in);
-                System.out.println("update successfully!"); // Inform user
+            } else {
+                System.out.println("8. Update  Majors");
+                System.out.println("9. Update Semester");
+                System.out.println("10. universityName");
             }
 
+            checkUp = Integer.parseInt(io.checkNumber());
+
+            //   in menu nguoi dung can update gi
+            // int select = io.kiem tra phan can update
+            list.get(select - 1).updateAbout(checkUp);
+
+            System.out.println("update successfully!");
         }
 
     }
+
 
     /**
      * Deletes a candidate based on the selected index.
