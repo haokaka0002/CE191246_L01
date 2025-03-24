@@ -118,7 +118,7 @@ public class Experience extends Candidates {
      *
      * @param no number to display in order
      */
-    @Override
+    
     public void afterSearch(int no) {
         String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
         System.out.printf("|%-3d|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|\n", no, name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype());  // Print candidate data
@@ -129,7 +129,7 @@ public class Experience extends Candidates {
      *
      * @param i index of attribute to update
      */
-    @Override
+    
     public void updateAbout(int i) {
         switch (i) {
             case 1:
@@ -176,22 +176,10 @@ public class Experience extends Candidates {
     }
 
     /**
-     * Show basic info before update
-     *
-     * @param i candidate number in list
-     */
-    @Override
-    public void beforeUpdate(int i) {
-        String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
-        System.out.printf("|%-3d|%-16s|%-4d|\n", i, name, super.getCandidatetype());  // Print info
-    }
-
-    /**
      * Show all details of Experience candidate
      *
      * @param no number to display in order
      */
-    @Override
     public void show(int no) {
         String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
         System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-10d|%-9s|\n", no, super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(), getExpInYear(), getProSkill());  // Print all details

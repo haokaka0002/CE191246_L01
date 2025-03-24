@@ -14,7 +14,7 @@ import java.util.Set;
  *
  * @author Phan Duc Tho - CE191246
  *
- * Date: 1/4/2025
+ * Date: 1/3/2025
  *
  */
 public abstract class Candidates {
@@ -251,26 +251,18 @@ public abstract class Candidates {
      *
      * @param no Index or identifier for the candidate
      */
-    public abstract void afterSearch(int no);
-
+//    public abstract void afterSearch(int no);
+public void afterSearch(int no) {
+        String nameFull = getFirstName() + " " + getLastName();  // Combine full name
+        System.out.printf("|%-3d|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|\n", no, nameFull, getBirthDate(), getAddress(), getPhone(),getEmail(),getCandidatetype());  // Print candidate data
+    }
     /**
      * Update candidate details.
      *
      * @param i Identifier or index of the candidate
      */
-    public abstract void updateAbout(int i);
+//    public abstract void updateAbout(int i);
 
-    /**
-     * Display information before updating.
-     *
-     * @param i Index of the candidate
-     */
-    public abstract void beforeUpdate(int i);
-
-    /**
-     * Display candidate information in a formatted style.
-     *
-     * @param no Index or serial number
-     */
-    public abstract void show(int no);
+  
+   
 }

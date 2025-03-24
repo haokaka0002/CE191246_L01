@@ -130,7 +130,7 @@ public class Fresher extends Candidates {
      *
      * @param no the index or number of the candidate
      */
-    @Override
+    
     public void afterSearch(int no) {
         String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
         System.out.printf("|%-3d|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|\n", no, name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype());  // Print formatted candidate info
@@ -141,7 +141,7 @@ public class Fresher extends Candidates {
      *
      * @param i the field index to update
      */
-    @Override
+    
     public void updateAbout(int i) {
         switch (i) {
             case 1:
@@ -195,20 +195,13 @@ public class Fresher extends Candidates {
      *
      * @param i the index of candidate
      */
-    @Override
-    public void beforeUpdate(int i) {
-        String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
-        System.out.printf("|%-3d|%-16s|%-4d|\n", i, name, super.getCandidatetype());  // Print info for verification
-    }
-
     /**
      * Show full details of Fresher candidate
      *
      * @param no the order number for display
      */
-    @Override
     public void show(int no) {
         String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
-        System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-9s|%-9s|%-11s|\n", no, super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(), getGraduation_date(), getGraduation_rank(), getEducation());  // Print all details
+        System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-9s|%-8s|%-10s|\n", no, super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(), getGraduation_date(), getGraduation_rank(), getEducation());  // Print all details
     }
 }

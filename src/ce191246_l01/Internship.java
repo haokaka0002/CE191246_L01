@@ -130,7 +130,7 @@ public class Internship extends Candidates {
      *
      * @param no candidate number
      */
-    @Override
+    
     public void afterSearch(int no) {
         String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
         System.out.printf("|%-3d|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|\n", no, name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype());  // Print short info
@@ -141,7 +141,7 @@ public class Internship extends Candidates {
      *
      * @param i the index of the field to update
      */
-    @Override
+    
     public void updateAbout(int i) {
         switch (i) {
             case 1:
@@ -191,22 +191,10 @@ public class Internship extends Candidates {
     }
 
     /**
-     * Show candidate info before updating
-     *
-     * @param i candidate number
-     */
-    @Override
-    public void beforeUpdate(int i) {
-        String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
-        System.out.printf("|%-3d|%-16s|%-4d|\n", i, name, super.getCandidatetype());  // Print short info
-    }
-
-    /**
      * Show full details of the Internship candidate
      *
      * @param no candidate number
      */
-    @Override
     public void show(int no) {
         String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
         System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-7s|%-8s|%-10s|\n", no, super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(), getMajors(), getSemester(), getUniversityName());  // Print full details

@@ -145,25 +145,34 @@ public class IO {
      */
     public int checkBirthDate() {
         int input; // Declare variable for birth year
+        String data = "";
         System.out.print("Enter BirthDate: "); // Prompt for birth year
 
         do {
             try {
-                input = Integer.parseInt(sc.nextLine().trim()); // Read and parse input
+                data = sc.nextLine().trim();//input data
 
+                for (int i = 0; i < data.length(); i++) { // Loop through each character
+                    if (!((data.charAt(i) >= '0' && data.charAt(i) <= '9'))) { // Check if character is not a digit
+                        System.out.print("Impossible! Please enter BirthDate again: "); // Display error message
+                        throw new Exception(); // Force loop to retry
+                    }
+                }
+                input = Integer.parseInt(data); // Read and parse input
                 if ((2025 - input) < 18) { // Check if user is under 18
                     System.out.print("Impossible! Please enter BirthDate again: "); // Print error
-                    continue; // Retry
+                    throw new Exception(); // Throw exception to retry
                 }
 
                 if (input > 1900 && input < 2026) { // Check valid year range
                     break; // Exit loop if valid
                 } else {
                     System.out.print("Impossible! Please enter BirthDate again: "); // Print error
-                    continue; // Retry
+                    throw new Exception(); // Throw exception to retry
                 }
             } catch (Exception e) {
-                System.out.print("Impossible! Please enter BirthDate again: "); // Print error if parsing fails
+
+                continue;//continue the loop
             }
         } while (true); // Repeat until valid input
 
@@ -476,14 +485,14 @@ public class IO {
 
                 if (input.isEmpty()) { // Check if input is empty
                     System.out.println("Invalid.Please enter again!"); // Error message
-                    continue; // Retry
+                    throw new Exception(); // Retry
                 }
 
                 for (int i = 0; i < input.length(); i++) { // Loop through characters
                     if (!((input.charAt(i) >= 'a' && input.charAt(i) <= 'z')
                             || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z'))) { // Check if not a letter
                         System.out.println("Invalid. Please enter again!"); // Error message
-                        continue; // Skip invalid character
+                        throw new Exception(); // Retry
                     }
                 }
 
@@ -511,19 +520,21 @@ public class IO {
                 input = sc.nextLine().trim(); // Read and trim input
 
                 if (input.isEmpty()) { // Check if input is empty
-                    System.out.println("Invalid.Please enter again!"); // Error message
-                    continue; // Retry
+
+                    throw new Exception(); // Retry
                 }
 
                 int check = Integer.parseInt(input); // Parse input to integer
                 if (check > 0) { // Check if number is positive
                     break; // Valid input
                 } else {
-                    System.out.println("Invalid.Please enter again!"); // Error message
-                    continue; // Retry
+
+                    throw new Exception(); // Retry
                 }
 
             } catch (Exception e) {
+                System.out.println("Invalid.Please enter again!"); // Error message
+
                 continue; // Retry on exception
             }
 
@@ -554,7 +565,7 @@ public class IO {
                     if (!((input.charAt(i) >= 'a' && input.charAt(i) <= 'z')
                             || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z'))) { // Check if character is valid
                         System.out.println("Invalid. Please enter again!"); // Error message
-                       throw new Exception(); // Skip invalid character
+                        throw new Exception(); // Skip invalid character
                     }
                 }
 
@@ -589,7 +600,7 @@ public class IO {
                     if (!((input.charAt(i) >= 'a' && input.charAt(i) <= 'z')
                             || (input.charAt(i) >= 'A' && input.charAt(i) <= 'F'))) { // Check if character is valid
                         System.out.println("Invalid. Please enter again!"); // Error message
-                         throw new Exception(); // Skip invalid character
+                        throw new Exception(); // Skip invalid character
                     }
                 }
 
@@ -680,8 +691,8 @@ public class IO {
                 input = sc.nextLine().trim(); // Read and trim input
 
                 if (input.isEmpty()) { // Check if empty
-                    System.out.println("Invalid.Please enter again!"); // Error message
-                    continue; // Retry
+
+                    throw new Exception(); // Retry
                 }
 
                 int check = Integer.parseInt(input); // Parse input
@@ -689,11 +700,12 @@ public class IO {
                 if (check >= 0 && check <= 2) { // Check if valid range
                     break; // Exit loop
                 } else {
-                    System.out.println("Invalid.Please enter again!"); // Error message
-                    continue; // Retry
+
+                    throw new Exception(); // Retry
                 }
 
             } catch (Exception e) {
+                System.out.println("Invalid.Please enter again!"); // Error message
                 continue; // Retry on exception
             }
 
@@ -715,8 +727,8 @@ public class IO {
                 input = sc.nextLine().trim(); // Read and trim input
 
                 if (input.isEmpty()) { // Check if empty
-                    System.out.println("Invalid.Please enter again!"); // Error message
-                    continue; // Retry
+
+                    throw new Exception(); // Retry
                 }
 
                 int check = Integer.parseInt(input); // Parse to integer
@@ -724,11 +736,12 @@ public class IO {
                 if (check > 0) { // Check if greater than 0
                     break; // Exit if valid
                 } else {
-                    System.out.println("Invalid.Please enter again!"); // Error message
-                    continue; // Retry
+
+                    throw new Exception(); // Retry
                 }
 
             } catch (Exception e) {
+                System.out.println("Invalid.Please enter again!"); // Error message
                 continue; // Retry on exception
             }
 
@@ -750,8 +763,8 @@ public class IO {
                 input = sc.nextLine().trim(); // Read and trim input
 
                 if (input.isEmpty()) { // Check if input is empty
-                    System.out.println("Invalid.Please enter again!"); // Error message
-                    continue; // Retry
+
+                    throw new Exception(); // Retry
                 }
 
                 int check = Integer.parseInt(input); // Parse to integer
@@ -759,11 +772,12 @@ public class IO {
                 if (check > 0) { // Check if positive
                     break; // Exit if valid
                 } else {
-                    System.out.println("Invalid.Please enter again!"); // Error message
-                    continue; // Retry
+
+                    throw new Exception(); // Retry
                 }
 
             } catch (Exception e) {
+                System.out.println("Invalid.Please enter again!"); // Error message
                 continue; // Retry on exception
             }
 
@@ -785,8 +799,8 @@ public class IO {
                 input = sc.nextLine().trim(); // Read and trim input
 
                 if (input.isEmpty()) { // Check if input is empty
-                    System.out.println("Invalid.Please enter again!"); // Error message
-                    continue; // Retry
+
+                    throw new Exception(); // Retry
                 }
 
                 int check = Integer.parseInt(input); // Parse to integer
@@ -794,11 +808,12 @@ public class IO {
                 if (check > 0) { // Check if valid
                     break; // Exit if valid
                 } else {
-                    System.out.println("Invalid.Please enter again!"); // Error message
-                    continue; // Retry
+
+                    throw new Exception(); // Retry
                 }
 
             } catch (Exception e) {
+                System.out.println("Invalid.Please enter again!"); // Error message
                 continue; // Retry on exception
             }
 
