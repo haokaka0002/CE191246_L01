@@ -6,6 +6,8 @@
 package ce191246_l01;
 
 import com.sun.imageio.plugins.bmp.BMPConstants;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * L01 - title: Create a Java console program to manage Candidates of company.
@@ -89,8 +91,9 @@ public class Experience extends Candidates {
     /**
      * Method to enter data for Experience candidate
      */
-    public void entryData() {
-        super.entryData();  // Call entryData method from parent class
+   
+    public void entryDataAttribute() {
+          // Call entryData method from parent class
         super.setCandidatetype(0);  // Set candidate type to 0 for Experience
         do {
             ExpInYear = io.expInYear();  // Input experience in years
@@ -118,7 +121,7 @@ public class Experience extends Candidates {
      *
      * @param no number to display in order
      */
-    
+    @Override
     public void afterSearch(int no) {
         String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
         System.out.printf("|%-3d|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|\n", no, name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype());  // Print candidate data
@@ -129,12 +132,10 @@ public class Experience extends Candidates {
      *
      * @param i index of attribute to update
      */
-    
+    @Override
     public void updateAbout(int i) {
+
         switch (i) {
-            case 1:
-                super.setCandidateId(io.checkCandidateId());  // Update candidate ID
-                break;
             case 2:
                 super.setFirstName(io.checkFirstName());  // Update first name
                 break;
@@ -147,12 +148,7 @@ public class Experience extends Candidates {
             case 5:
                 super.setAddress(io.checkAddress());  // Update address
                 break;
-            case 6:
-                super.setEmail(io.checkEmail());  // Update email
-                break;
-            case 7:
-                super.setPhone(io.checkPhone());  // Update phone
-                break;
+
             default:
                 updateAttribute(i);  // Update experience-specific attribute
                 break;
@@ -184,4 +180,5 @@ public class Experience extends Candidates {
         String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
         System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-10d|%-9s|\n", no, super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(), getExpInYear(), getProSkill());  // Print all details
     }
+
 }

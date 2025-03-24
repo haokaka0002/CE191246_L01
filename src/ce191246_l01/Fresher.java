@@ -5,6 +5,9 @@
  */
 package ce191246_l01;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * L01 - title: Create a Java console program to manage Candidates of company.
  *
@@ -23,6 +26,7 @@ public class Fresher extends Candidates {
     private String graduation_rank;
     // Store education background
     private String education;
+    private static Set<String> usedIds = new HashSet<>();
 
     /**
      * Default constructor for Fresher class
@@ -55,10 +59,10 @@ public class Fresher extends Candidates {
     /**
      * Method to enter data specific to Fresher candidate
      */
-    public void entryData() {
-        super.entryData();  // Call the entryData method from parent class
+    public void entryDataAttribute() {
+          // Call the entryData method from parent class
         super.setCandidatetype(1);  // Set candidate type as Fresher (1)
-        graduation_date = io.checkGraduation_date();  // Get graduation date from input
+        graduation_date = io.checkGraduation_date(super.getBirthDate());  // Get graduation date from input
         graduation_rank = io.checkGraduation_rank();  // Get graduation rank from input
         education = io.checkEducation();  // Get education info from input
     }
@@ -130,7 +134,7 @@ public class Fresher extends Candidates {
      *
      * @param no the index or number of the candidate
      */
-    
+    @Override
     public void afterSearch(int no) {
         String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
         System.out.printf("|%-3d|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|\n", no, name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype());  // Print formatted candidate info
@@ -141,12 +145,11 @@ public class Fresher extends Candidates {
      *
      * @param i the field index to update
      */
-    
+    @Override
     public void updateAbout(int i) {
+
         switch (i) {
-            case 1:
-                super.setCandidateId(io.checkCandidateId());  // Update candidate ID
-                break;
+
             case 2:
                 super.setFirstName(io.checkFirstName());  // Update first name
                 break;
@@ -158,12 +161,6 @@ public class Fresher extends Candidates {
                 break;
             case 5:
                 super.setAddress(io.checkAddress());  // Update address
-                break;
-            case 6:
-                super.setEmail(io.checkEmail());  // Update email
-                break;
-            case 7:
-                super.setPhone(io.checkPhone());  // Update phone
                 break;
             default:
                 updateAttribute(i);  // Update attributes specific to Fresher
@@ -179,7 +176,7 @@ public class Fresher extends Candidates {
     public void updateAttribute(int i) {
         switch (i) {
             case 8:
-                graduation_date = io.checkGraduation_date();  // Update graduation date
+                graduation_date = io.checkGraduation_date(super.getBirthDate());  // Update graduation date
                 break;
             case 9:
                 graduation_rank = io.checkGraduation_rank();  // Update graduation rank
@@ -202,6 +199,7 @@ public class Fresher extends Candidates {
      */
     public void show(int no) {
         String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
-        System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-9s|%-8s|%-10s|\n", no, super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(), getGraduation_date(), getGraduation_rank(), getEducation());  // Print all details
+        System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-10s|%-8s|%-10s|\n", no, super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(), getGraduation_date(), getGraduation_rank(), getEducation());  // Print all details
     }
+
 }

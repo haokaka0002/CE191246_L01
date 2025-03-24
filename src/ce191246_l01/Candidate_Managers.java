@@ -24,16 +24,16 @@ public class Candidate_Managers {
 
     public void menu() {
         int choice;
-        list.add(new Internship("toan", "tho", "fpt", "3112", "phan", "ThoInter", 1, "302", "phan@gmail.com", "0377164760", 2));
+        list.add(new Internship("toan", "tho", "fpt", "3110", "phan", "ThoInter", 1, "302", "phan@gmail.com", "0377164760", 2));
+        list.add(new Internship("toan", "tho", "fpt", "3111", "phan", "Tho", 1, "302", "phan@gmail.com", "0377164760", 2));
         list.add(new Internship("toan", "tho", "fpt", "3112", "phan", "Tho", 1, "302", "phan@gmail.com", "0377164760", 2));
-        list.add(new Internship("toan", "tho", "fpt", "3112", "phan", "Tho", 1, "302", "phan@gmail.com", "0377164760", 2));
-        list.add(new Internship("toan", "tho", "fpt", "3112", "phan", "Tho", 1, "302", "phan@gmail.com", "0377164760", 2));
-        list.add(new Fresher("20/10/2006", "good", "daihoc", "se1092", "thofr", "phan", 1, "302", "phan@gmail.com", "0377164760", 1));
-        list.add(new Fresher("20/10/2006", "good", "daihoc", "se1092", "tho", "phan", 1, "302", "phan@gmail.com", "0377164760", 1));
-        list.add(new Fresher("20/10/2006", "good", "daihoc", "se1092", "tho", "phan", 1, "302", "phan@gmail.com", "0377164760", 1));
-        list.add(new Experience(1, "yasuo", "se1902", "thoex", "phan", 1, "302", "tho@gmail.com", "0377174760", 0));
-        list.add(new Experience(1, "yasuo", "se1902", "tho", "phan", 1, "302", "tho@gmail.com", "0377174760", 0));
-        list.add(new Experience(1, "yasuo", "se1902", "tho", "phan", 1, "302", "tho@gmail.com", "0377174760", 0));
+        list.add(new Internship("toan", "tho", "fpt", "3113", "phan", "Tho", 1, "302", "phan@gmail.com", "0377164760", 2));
+        list.add(new Fresher("20/10/2006", "good", "daihoc", "se1010", "thofr", "phan", 1, "302", "phan@gmail.com", "0377164760", 1));
+        list.add(new Fresher("20/10/2006", "good", "daihoc", "se1011", "tho", "phan", 1, "302", "phan@gmail.com", "0377164760", 1));
+        list.add(new Fresher("20/10/2006", "good", "daihoc", "se1012", "tho", "phan", 1, "302", "phan@gmail.com", "0377164760", 1));
+        list.add(new Experience(1, "yasuo", "se1910", "thoex", "phan", 1, "302", "tho@gmail.com", "0377174760", 0));
+        list.add(new Experience(1, "yasuo", "se1911", "tho", "phan", 1, "302", "tho@gmail.com", "0377174760", 0));
+        list.add(new Experience(1, "yasuo", "se1912", "tho", "phan", 1, "302", "tho@gmail.com", "0377174760", 0));
         do {
             System.out.println("CANDIDATE MANAGEMENT SYSTEM");
             System.out.println("1. Experience");
@@ -43,7 +43,8 @@ public class Candidate_Managers {
             System.out.println("5. Update");
             System.out.println("6. Delete");
             System.out.println("7. Show");
-            System.out.println("8. Exit");
+            System.out.println("8. Show All");
+            System.out.println("9. exit");
             System.out.print("Please choose: ");
 
             choice = io.checkChoice();
@@ -67,33 +68,51 @@ public class Candidate_Managers {
                     delete();
                     break;
                 case 7:
-                    showALl();
-                    break;
-                case 8:
                     show();
                     break;
+                case 8:
+                    showALl();
+                    break;
+                case 9:
+                    break;
             }
-        } while (choice != 8);
+        } while (choice != 9);
 
     }
 
     public void experience() {
+
         Candidates ex = new Experience();
+        ex.setCandidateId(checkId());
+
         ex.entryData();
+        ex.setPhone(checkPhone());
+        ex.setEmail(checkEmail());
+        ex.entryDataAttribute();
         list.add(ex);
 
     }
 
     public void fresher() {
         Candidates fr = new Fresher();
+        fr.setCandidateId(checkId());
+
         fr.entryData();
+        fr.setPhone(checkPhone());
+        fr.setEmail(checkEmail());
+        fr.entryDataAttribute();
         list.add(fr);
 
     }
 
     public void internship() {
         Candidates in = new Internship();
+        in.setCandidateId(checkId());
+
         in.entryData();
+        in.setPhone(checkPhone());
+        in.setEmail(checkEmail());
+        in.entryDataAttribute();
         list.add(in);
 
     }
@@ -229,11 +248,19 @@ public class Candidate_Managers {
             }
 
             checkUp = Integer.parseInt(io.checkNumber());
-
-            //   in menu nguoi dung can update gi
-            // int select = io.kiem tra phan can update
-            list.get(select - 1).updateAbout(checkUp);
-
+            if (checkUp == 1) {
+                list.get(select - 1).setCandidateId(checkId());
+            }
+            if (checkUp == 7) {
+                list.get(select - 1).setPhone(checkPhone());
+            }
+            if (checkUp == 6) {
+                list.get(select - 1).setPhone(checkEmail());
+            } else {
+                //   in menu nguoi dung can update gi
+                // int select = io.kiem tra phan can update
+                list.get(select - 1).updateAbout(checkUp);
+            }
             System.out.println("update successfully!");
         }
 
@@ -244,12 +271,12 @@ public class Candidate_Managers {
         showALl();
         if (!list.isEmpty()) {
             int index = Integer.parseInt(io.checkDelete());
-            if(index>list.size()){
-                System.out.println("Not fine to delete");
-            }else{
+            if (index > list.size()) {
+                System.out.println("Not find to delete");
+            } else {
 
-            list.remove(index - 1);
-            System.out.println("Delete successfully");
+                list.remove(index - 1);
+                System.out.println("Delete successfully");
             }
         }
     }
@@ -279,7 +306,7 @@ public class Candidate_Managers {
         }
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) instanceof Experience) {
-               
+
                 list.get(i).show(i + 1);
                 check = true;
             }
@@ -312,7 +339,7 @@ public class Candidate_Managers {
         }
         for (int i = 0; i < list.size(); i++) {// Loop through list
             if (list.get(i) instanceof Fresher) {//check is have data or no
-               list.get(i).show(i + 1);
+                list.get(i).show(i + 1);
                 check = true;// Found
             }
         }
@@ -353,16 +380,70 @@ public class Candidate_Managers {
 
     }
 
-    public void show(){
-        int i=0;
-         System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
+    public void show() {
+        int i = 0;
+        System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
         System.out.println("|No.|Fullname        |Birthdate|Address      |Phone     |Email            |Type|");
         System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
-        for(Candidates s : list){
+        for (Candidates s : list) {
             i++;
-           s.afterSearch(i);
+            s.afterSearch(i);
         }
-                System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
+        System.out.println("+---+----------------+---------+-------------+----------+-----------------+----+");
+
+    }
+
+    public String checkId() {
+        String checkid;
+        boolean check;
+        do {
+            check = false;
+            checkid = io.checkCandidateId();
+            for (Candidates ca : list) {
+                if (checkid.equalsIgnoreCase(ca.getCandidateId())) {
+                    System.out.println("ID is used");
+                    check = true;
+                }
+
+            }
+        } while (check);
+        return checkid;
+
+    }
+
+    public String checkPhone() {
+        String checkphone;
+        boolean check;
+        do {
+            check = false;
+            checkphone = io.checkPhone();
+            for (Candidates ca : list) {
+                if (checkphone.equalsIgnoreCase(ca.getPhone())) {
+                    System.out.println("Phone is used");
+                    check = true;
+                }
+
+            }
+        } while (check);
+        return checkphone;
+
+    }
+
+    public String checkEmail() {
+        String checkemail;
+        boolean check;
+        do {
+            check = false;
+            checkemail = io.checkEmail();
+            for (Candidates ca : list) {
+                if (checkemail.equalsIgnoreCase(ca.getEmail())) {
+                    System.out.println("Phone is used");
+                    check = true;
+                }
+
+            }
+        } while (check);
+        return checkemail;
 
     }
 }

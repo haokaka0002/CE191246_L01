@@ -33,8 +33,6 @@ public abstract class Candidates {
     private int candidatetype;        // Candidate type (0 = Experience, 1 = Fresher, 2 = Internship)
 
     // Static set to track used candidate IDs and avoid duplication
-    private static Set<String> usedIds = new HashSet<>();
-
     /**
      * Default constructor for Candidates. Used when no initial data is
      * provided.
@@ -71,27 +69,13 @@ public abstract class Candidates {
      * uniqueness across all candidate objects.
      */
     public void entryData() {
-        while (true) {
-            // Prompt user to enter a valid candidate ID
-            candidateId = io.checkCandidateId().toUpperCase();
-
-            // Check if the ID already exists in the global set
-            if (usedIds.contains(candidateId)) {
-                System.out.println("ID is use"); // Notify user of duplicate
-                continue; // Ask again
-            } else {
-                usedIds.add(candidateId); // Add new unique ID to the set
-                break; // Exit loop
-            }
-        }
 
         // Input and validate the remaining candidate information
         firstName = io.checkFirstName();     // Validate first name
         lastName = io.checkLastName();       // Validate last name
         birthDate = io.checkBirthDate();     // Validate year of birth
         address = io.checkAddress();         // Validate address
-        email = io.checkEmail();             // Validate email format
-        phone = io.checkPhone();             // Validate phone number
+          
     }
 
     // === Getter and Setter methods ===
@@ -252,17 +236,20 @@ public abstract class Candidates {
      * @param no Index or identifier for the candidate
      */
 //    public abstract void afterSearch(int no);
-public void afterSearch(int no) {
+    public void afterSearch(int no) {
         String nameFull = getFirstName() + " " + getLastName();  // Combine full name
-        System.out.printf("|%-3d|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|\n", no, nameFull, getBirthDate(), getAddress(), getPhone(),getEmail(),getCandidatetype());  // Print candidate data
+        System.out.printf("|%-3d|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|\n", no, nameFull, getBirthDate(), getAddress(), getPhone(), getEmail(), getCandidatetype());  // Print candidate data
     }
+
     /**
      * Update candidate details.
      *
      * @param i Identifier or index of the candidate
      */
+    public abstract void entryDataAttribute();
+            
     public abstract void updateAbout(int i);
 
-  
-   
+    public abstract void show(int no);
+
 }

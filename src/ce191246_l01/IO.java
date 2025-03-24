@@ -378,7 +378,7 @@ public class IO {
      *
      * @return A valid graduation date string
      */
-    public String checkGraduation_date() {
+    public String checkGraduation_date(int birthOfYears) {
         String input; // Declare input variable
         do {
             System.out.print("Enter graduated time: "); // Prompt for graduation date
@@ -424,6 +424,11 @@ public class IO {
                         System.out.println("Invalid!"); // Error message
                         throw new Exception(); // Retry
                     }
+                }
+                if(years<=birthOfYears){
+                    System.out.println("Invalid");
+                    throw new Exception();
+                    
                 }
 
             } catch (Exception e) {

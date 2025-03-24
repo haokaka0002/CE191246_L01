@@ -5,6 +5,9 @@
  */
 package ce191246_l01;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * L01 - title: Create a Java console program to manage Candidates of company.
  *
@@ -23,7 +26,7 @@ public class Internship extends Candidates {
     private String universityName;
     // IO object to handle input
     private IO io = new IO();
-
+      
     /**
      * Default constructor for Internship class
      */
@@ -55,8 +58,8 @@ public class Internship extends Candidates {
     /**
      * Method to input intern-specific data
      */
-    public void entryData() {
-        super.entryData();  // Call parent method to input common candidate data
+    public void entryDataAttribute() {
+//        / Call parent method to input common candidate data
         super.setCandidatetype(1);  // Set the candidate type to 1 (intern)
         majors = io.checkMajors();  // Input the major
         semester = io.checkSemester();  // Input the semester
@@ -131,6 +134,7 @@ public class Internship extends Candidates {
      * @param no candidate number
      */
     
+    @Override
     public void afterSearch(int no) {
         String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
         System.out.printf("|%-3d|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|\n", no, name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype());  // Print short info
@@ -142,11 +146,11 @@ public class Internship extends Candidates {
      * @param i the index of the field to update
      */
     
+    @Override
     public void updateAbout(int i) {
+       String checkid="";
         switch (i) {
-            case 1:
-                super.setCandidateId(io.checkCandidateId());  // Update candidate ID
-                break;
+           
             case 2:
                 super.setFirstName(io.checkFirstName());  // Update first name
                 break;
@@ -158,13 +162,7 @@ public class Internship extends Candidates {
                 break;
             case 5:
                 super.setAddress(io.checkAddress());  // Update address
-                break;
-            case 6:
-                super.setEmail(io.checkEmail());  // Update email
-                break;
-            case 7:
-                super.setPhone(io.checkPhone());  // Update phone number
-                break;
+                break; 
             default:
                 updateAttribute(i);  // Update internship-specific attribute
                 break;
@@ -195,9 +193,11 @@ public class Internship extends Candidates {
      *
      * @param no candidate number
      */
+  
     public void show(int no) {
         String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
         System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-7s|%-8s|%-10s|\n", no, super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(), getMajors(), getSemester(), getUniversityName());  // Print full details
     }
+
 
 }
