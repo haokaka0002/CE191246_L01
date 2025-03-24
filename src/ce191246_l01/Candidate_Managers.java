@@ -30,16 +30,7 @@ public class Candidate_Managers {
     public void menu() {
 
         int choice; // Variable to store user choice
- list.add(new Internship("toan", "tho", "fpt", "3112", "phan", "ThoInter", 1, "302", "phan@gmail.com", "0377164760", 2));
-        list.add(new Internship("toan", "tho", "fpt", "3112", "phan", "Tho", 1, "302", "phan@gmail.com", "0377164760", 2));
-        list.add(new Internship("toan", "tho", "fpt", "3112", "phan", "Tho", 1, "302", "phan@gmail.com", "0377164760", 2));
-        list.add(new Internship("toan", "tho", "fpt", "3112", "phan", "Tho", 1, "302", "phan@gmail.com", "0377164760", 2));
-        list.add(new Fresher("20/10/2006", "good", "daihoc", "se1092", "thofr", "phan", 1, "302", "phan@gmail.com", "0377164760", 1));
-        list.add(new Fresher("20/10/2006", "good", "daihoc", "se1092", "tho", "phan", 1, "302", "phan@gmail.com", "0377164760", 1));
-        list.add(new Fresher("20/10/2006", "good", "daihoc", "se1092", "tho", "phan", 1, "302", "phan@gmail.com", "0377164760", 1));
-        list.add(new Experience(1, "yasuo", "se1902", "thoex", "phan", 1, "302", "tho@gmail.com", "0377174760", 0));
-        list.add(new Experience(1, "yasuo", "se1902", "tho", "phan", 1, "302", "tho@gmail.com", "0377174760", 0));
-        list.add(new Experience(1, "yasuo", "se1902", "tho", "phan", 1, "302", "tho@gmail.com", "0377174760", 0));
+        
         do {
             System.out.println("CANDIDATE MANAGEMENT SYSTEM"); // Display menu title
             System.out.println("1. Experience"); // Option 1
