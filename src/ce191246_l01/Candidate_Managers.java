@@ -266,12 +266,15 @@ public class Candidate_Managers {
         showALl(); // Show all candidates
         if (!list.isEmpty()) { // Check if list is not empty
             int index = Integer.parseInt(io.checkDelete()); // Get index to delete
-
+if(index>list.size()){
+    System.out.println("NOT DATA");
+    
+}else{
             list.remove(index - 1); // Remove candidate from list
             System.out.println("Delete successfully"); // Confirm deletion
         }
     }
-
+    }
     /**
      * Shows detailed list of all candidates separated by type.
      */
