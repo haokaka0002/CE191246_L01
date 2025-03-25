@@ -136,16 +136,16 @@ public class Experience extends Candidates {
     public void updateAbout(int i) {
 
         switch (i) {
-            case 2:
+            case 1:
                 super.setFirstName(io.checkFirstName());  // Update first name
                 break;
-            case 3:
+            case 2:
                 super.setLastName(io.checkLastName());  // Update last name
                 break;
-            case 4:
+            case 3:
                 super.setBirthDate(io.checkBirthDate());  // Update birth date
                 break;
-            case 5:
+            case 4:
                 super.setAddress(io.checkAddress());  // Update address
                 break;
 
@@ -162,10 +162,10 @@ public class Experience extends Candidates {
      */
     public void updateAttribute(int i) {
         switch (i) {
-            case 8:
+            case 7:
                 ExpInYear = io.expInYear();  // Update experience in years
                 break;
-            case 9:
+            case 8:
                 proSkill = io.proSkill();  // Update professional skill
                 break;
         }
@@ -178,7 +178,7 @@ public class Experience extends Candidates {
      */
     public void show(int no) {
         String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
-        System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-10d|%-9s|\n", no, super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(), getExpInYear(), getProSkill());  // Print all details
+        System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-10d|%-16s|\n", no, super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(), getExpInYear(), getProSkill());  // Print all details
     }
 
 }

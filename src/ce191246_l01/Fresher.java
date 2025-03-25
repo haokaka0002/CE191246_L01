@@ -150,16 +150,16 @@ public class Fresher extends Candidates {
 
         switch (i) {
 
-            case 2:
+            case 1:
                 super.setFirstName(io.checkFirstName());  // Update first name
                 break;
-            case 3:
+            case 2:
                 super.setLastName(io.checkLastName());  // Update last name
                 break;
-            case 4:
+            case 3:
                 super.setBirthDate(io.checkBirthDate());  // Update birth date
                 break;
-            case 5:
+            case 4:
                 super.setAddress(io.checkAddress());  // Update address
                 break;
             default:
@@ -175,13 +175,13 @@ public class Fresher extends Candidates {
      */
     public void updateAttribute(int i) {
         switch (i) {
-            case 8:
+            case 7:
                 graduation_date = io.checkGraduation_date(super.getBirthDate());  // Update graduation date
                 break;
-            case 9:
+            case 8:
                 graduation_rank = io.checkGraduation_rank();  // Update graduation rank
                 break;
-            case 10:
+            case 9:
                 education = io.checkEducation();  // Update education
                 break;
         }

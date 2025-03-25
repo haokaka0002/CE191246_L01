@@ -226,35 +226,33 @@ public class Candidate_Managers {
                 }
             } while (true);
 
-            System.out.println("1. Update candidateId ");
-            System.out.println("2. Update firstName ");
-            System.out.println("3. Update lastName ");
-            System.out.println("4. Update birthDate ");
-            System.out.println("5. Update address ");
-            System.out.println("6. Update email ");
-            System.out.println("7. Update phone ");
+            
+            System.out.println("1. Update firstName ");
+            System.out.println("2. Update lastName ");
+            System.out.println("3. Update birthDate ");
+            System.out.println("4. Update address ");
+            System.out.println("5. Update email ");
+            System.out.println("6. Update phone ");
             if (list.get(select - 1) instanceof Experience) {
-                System.out.println("8. Update Experience Of Years");
-                System.out.println("9. Update ProSkill");
+                System.out.println("7. Update Experience Of Years");
+                System.out.println("8. Update ProSkill");
             } else if (list.get(select - 1) instanceof Fresher) {
-                System.out.println("8. Update Graduation Date");
-                System.out.println("9. Update Graduation Rank");
-                System.out.println("10. Update Education");
+                System.out.println("7. Update Graduation Date");
+                System.out.println("8. Update Graduation Rank");
+                System.out.println("9. Update Education");
 
             } else {
-                System.out.println("8. Update  Majors");
-                System.out.println("9. Update Semester");
-                System.out.println("10. universityName");
+                System.out.println("7. Update  Majors");
+                System.out.println("8. Update Semester");
+                System.out.println("9. universityName");
             }
 
             checkUp = Integer.parseInt(io.checkNumber());
-            if (checkUp == 1) {
-                list.get(select - 1).setCandidateId(checkId());
-            }
-            if (checkUp == 7) {
+            
+            if (checkUp == 6) {
                 list.get(select - 1).setPhone(checkPhone());
             }
-            if (checkUp == 6) {
+            if (checkUp == 5) {
                 list.get(select - 1).setPhone(checkEmail());
             } else {
                 //   in menu nguoi dung can update gi
@@ -300,9 +298,9 @@ public class Candidate_Managers {
         }
         if (countEx != 0) {
 
-            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+"); // Table header
-            System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|ExpInYear |ProSkill |"); // Columns
-            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+"); // Separator
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+----------------+"); // Table header
+            System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|ExpInYear |ProSkill        |"); // Columns
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+----------------+"); // Separator
         }
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i) instanceof Experience) {
@@ -314,7 +312,7 @@ public class Candidate_Managers {
 
         if (countEx != 0) {//check is have data or no
 
-            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+---------+"); // Footer
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+----------+----------------+"); // Footer
         }
 
         if (!check) {//check is have data or no
@@ -361,9 +359,9 @@ public class Candidate_Managers {
             }
         }
         if (countIn != 0) {//check is have data or no
-            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-------+--------+----------+"); // Header
-            System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|Major  |Semester|University|"); // Columns
-            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-------+--------+----------+"); // Separator
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-----------------+--------+------------------+"); // Header
+            System.out.println("|No.|CandidatesID    |Fullname        |Birthdate|Address      |Phone     |Email            |Type|Major            |Semester|University        |"); // Columns
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-----------------+--------+------------------+"); // Separator
         }
         for (int i = 0; i < list.size(); i++) {// Loop through list
             if (list.get(i) instanceof Internship) {//check is have data or no
@@ -372,7 +370,7 @@ public class Candidate_Managers {
             }
         }
         if (countIn != 0) {//check is have data or no
-            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-------+--------+----------+"); // Footer
+            System.out.println("+---+----------------+----------------+---------+-------------+----------+-----------------+----+-----------------+--------+------------------+"); // Footer
         }
         if (!check) {//check is have data or no
             System.out.println("List empty"); // Inform user
@@ -437,7 +435,7 @@ public class Candidate_Managers {
             checkemail = io.checkEmail();
             for (Candidates ca : list) {
                 if (checkemail.equalsIgnoreCase(ca.getEmail())) {
-                    System.out.println("Phone is used");
+                    System.out.println("Email is used");
                     check = true;
                 }
 

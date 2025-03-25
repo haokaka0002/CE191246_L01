@@ -29,7 +29,8 @@ public class CE191246_L01 {
         cd.menu();
         
 //        IO io = new IO();
-//        io.checkDelete();
+//        io.checkEducation();
+//        io.checkMajors();
 
     }
 

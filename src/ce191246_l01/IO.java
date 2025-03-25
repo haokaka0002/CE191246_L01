@@ -225,7 +225,7 @@ public class IO {
                 }
 
                 for (int i = 0; i < input.length(); i++) { // Loop through each character
-                    if (!((input.charAt(i) >= '0' && input.charAt(i) <= '9'))) { // Check if character is not a digit
+                    if (!((input.charAt(i) >= '0' && input.charAt(i) <= '9')&&input.charAt(0) == '0')) { // Check if character is not a digit
                         System.out.println("Invalid. Please enter again!"); // Display error message
                         throw new Exception(); // Force loop to retry
                     }
@@ -357,7 +357,7 @@ public class IO {
                 }
                 for (int i = 0; i < input.length(); i++) { // Loop through each character
                     if (!((input.charAt(i) >= 'a' && input.charAt(i) <= 'z')
-                            || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z'))) { // Check if character is not a letter
+                            || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z')||input.charAt(i)==' ')) { // Check if character is not a letter
                         System.out.println("Invalid. Please enter again!"); // Error message
                         throw new Exception(); // Force retry
                     }
@@ -432,7 +432,7 @@ public class IO {
                 }
 
             } catch (Exception e) {
-                System.out.println("Please enter again: ");// Error message
+                System.out.println("Please enter again! ");// Error message
 
                 continue; // Retry on any parsing or logic error
             }
@@ -493,11 +493,12 @@ public class IO {
                     throw new Exception(); // Retry
                 }
 
-                for (int i = 0; i < input.length(); i++) { // Loop through characters
+                for (int i = 0; i < input.length(); i++) { // Loop through each character
                     if (!((input.charAt(i) >= 'a' && input.charAt(i) <= 'z')
-                            || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z')||input.charAt(i)==' ')) { // Check if not a letter
-                        System.out.println("Invalid. Please enter again!"); // Error message
-                        throw new Exception(); // Retry
+                            || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z')
+                            || input.charAt(i) == ' ')) { // Check if character is not a letter or space
+                        System.out.println("Invalid. Please enter again!"); // Print error
+                        throw new Exception(); // Throw exception to retry
                     }
                 }
 
@@ -566,11 +567,11 @@ public class IO {
                     throw new Exception(); // Retry
                 }
 
-                for (int i = 0; i < input.length() - 1; i++) { // Loop through characters except last one
+                for (int i = 0; i < input.length(); i++) { // Loop through each character
                     if (!((input.charAt(i) >= 'a' && input.charAt(i) <= 'z')
-                            || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z')||input.charAt(i)==' ')) { // Check if character is valid
+                            || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z')||input.charAt(i)==' ')) { // Check if character is not a letter
                         System.out.println("Invalid. Please enter again!"); // Error message
-                        throw new Exception(); // Skip invalid character
+                        throw new Exception(); // Force retry
                     }
                 }
 
@@ -601,14 +602,14 @@ public class IO {
                     throw new Exception();// Retry
                 }
 
-                for (int i = 0; i < input.length() - 1; i++) { // Loop through characters except last one
+                for (int i = 0; i < input.length(); i++) { // Loop through each character
                     if (!((input.charAt(i) >= 'a' && input.charAt(i) <= 'z')
-                            || (input.charAt(i) >= 'A' && input.charAt(i) <= 'F'))) { // Check if character is valid
-                        System.out.println("Invalid. Please enter again!"); // Error message
-                        throw new Exception(); // Skip invalid character
+                            || (input.charAt(i) >= 'A' && input.charAt(i) <= 'Z')
+                            || input.charAt(i) == ' ')) { // Check if character is not a letter or space
+                        System.out.println("Invalid. Please enter again!"); // Print error
+                        throw new Exception(); // Throw exception to retry
                     }
                 }
-
                 break; // Exit loop if input is valid
             } catch (Exception e) {
                 continue; // Retry on exception

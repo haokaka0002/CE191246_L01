@@ -151,16 +151,16 @@ public class Internship extends Candidates {
        String checkid="";
         switch (i) {
            
-            case 2:
+            case 1:
                 super.setFirstName(io.checkFirstName());  // Update first name
                 break;
-            case 3:
+            case 2:
                 super.setLastName(io.checkLastName());  // Update last name
                 break;
-            case 4:
+            case 3:
                 super.setBirthDate(io.checkBirthDate());  // Update birth date
                 break;
-            case 5:
+            case 4:
                 super.setAddress(io.checkAddress());  // Update address
                 break; 
             default:
@@ -176,13 +176,13 @@ public class Internship extends Candidates {
      */
     public void updateAttribute(int i) {
         switch (i) {
-            case 8:
+            case 7:
                 majors = io.checkMajors();  // Update major
                 break;
-            case 9:
+            case 8:
                 semester = io.checkSemester();  // Update semester
                 break;
-            case 10:
+            case 9:
                 universityName = io.checkUniversityname();  // Update university name
                 break;
         }
@@ -196,7 +196,7 @@ public class Internship extends Candidates {
   
     public void show(int no) {
         String name = super.getFirstName() + " " + super.getLastName();  // Combine full name
-        System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-7s|%-8s|%-10s|\n", no, super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(), getMajors(), getSemester(), getUniversityName());  // Print full details
+        System.out.printf("|%-3d|%-16s|%-16s|%-9s|%-13s|%-10s|%-17s|%-4s|%-17s|%-8s|%-18s|\n", no, super.getCandidateId(), name, super.getBirthDate(), super.getAddress(), super.getPhone(), super.getEmail(), super.getCandidatetype(), getMajors(), getSemester(), getUniversityName());  // Print full details
     }
 
 
