@@ -826,5 +826,29 @@ public class IO {
         } while (true); // Repeat until valid
         return input; // Return index to delete
     }
+ public String checkChoiceDelete() {
+        String input; // Declare variable to store input
+        System.out.println("Are you sure delete!");
+        do {
+            try {
+                System.out.print("Enter Yes/no: "); // Prompt for rank
+                input = sc.nextLine().trim(); // Read and trim input
 
+                if (input.equalsIgnoreCase("Yes")
+                        || // Check for valid ranks
+                        input.equalsIgnoreCase("No")
+                       ) {
+                    break; // Valid input
+                } else {
+                    System.out.println("Must enter yes/no "); // Error message
+                    continue; // Retry
+                }
+
+            } catch (Exception e) {
+                System.out.println("Must enter yes/no "); // Error on exception
+            }
+
+        } while (true); // Repeat until valid input
+        return input; // Return validated graduation rank
+    }
 }

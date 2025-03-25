@@ -267,11 +267,14 @@ public class Candidate_Managers {
     public void delete() {
 
         showALl();
+        String choice;
         if (!list.isEmpty()) {
             int index = Integer.parseInt(io.checkDelete());
             if (index > list.size()) {
                 System.out.println("Not find to delete");
-            } else {
+            }
+            choice =io.checkChoiceDelete();
+            if(choice.equalsIgnoreCase("yes")){
 
                 list.remove(index - 1);
                 System.out.println("Delete successfully");
